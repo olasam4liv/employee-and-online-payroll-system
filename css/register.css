@@ -1,0 +1,24 @@
+.form-horizontal{
+    width: 90%;
+    margin-left: 30%;
+}
+ .form-horizontal input{
+     width: 50%
+ }
+ .form-horizontal button{
+    width: 50%
+}
+/* .navbar-header, .nav, .navbar{
+  background-color: blue;
+} */
+h1{
+  align: center;
+}
+.error {
+    color: red;
+    margin-left: 5px;
+  }
+   
+  label.error {
+    display: inline;
+  }
