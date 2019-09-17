@@ -2,7 +2,12 @@ window.onload = function(){
     //alert("Window loaded")
 }
 $(document).ready(function(){
-     
+  function modal(){
+     $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  })
+  }
+ 
    $('#register-form').submit(function(e) {
             e.preventDefault();
             //alert("Window loaded");
@@ -58,11 +63,8 @@ $(document).ready(function(){
               }  
             }
          validate( $.post('http://localhost:3000/employee', userData))
-           
-           
-              
-             
     });
 
-   
+
+
 });
