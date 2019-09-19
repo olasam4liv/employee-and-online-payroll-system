@@ -1,3 +1,9 @@
+
+ .nav-item{
+  margin: 3px;
+}
+
+
 .form-horizontal{
     width: 90%;
     margin-left: 30%;
@@ -11,9 +17,7 @@
 /* .navbar-header, .nav, .navbar{
   background-color: blue;
 } */
-h1{
-  align: center;
-}
+ 
 .error {
     color: red;
     margin-left: 5px;

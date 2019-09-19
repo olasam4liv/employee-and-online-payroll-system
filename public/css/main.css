@@ -1,0 +1,439 @@
+body{
+     
+    font-size: 14px;
+    line-height: 1.5; 
+    font: 15px;
+    padding: 0;
+    margin: 0;
+    background-color: snow
+} 
+/* Global */
+/* main {
+    flex: 1;
+  } */
+  
+   .nav-item{
+       margin: 3px;
+   }
+  
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+} 
+.user-container {
+    width: 80;
+    margin: auto;
+    overflow: hidden;
+}     
+.button_1{
+    height: 40px;
+    background: #222fe0;
+    border: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #ffffff;
+    width: 30%
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}
+.sidebackground{
+    padding: 15px;
+    background: #81d1e9;
+    color: #000000;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+    
+}
+/* header */
+header{
+    background:#2a2f74;
+    color:#ffffff;
+    padding-top: 30px ;
+    min-height: 70px;
+    border-bottom: #81d1e9 3px solid;
+}
+header a{
+    color: #ffffff;
+    text-decoration: none;
+    text-transform:  uppercase;
+    font-size: 16px;
+}
+
+ 
+header li{
+    float:left;
+    display: inline;
+    /* top right bottom left */
+    padding:  0 20px 0 20px;
+}
+header #branding{
+    float: left;
+}
+header #branding h1{
+    margin: 0;
+}
+header nav{
+    float: right;
+    margin-top: 10px;
+}
+
+header .highlight, header .current a{
+    color: #5acef1;
+     font-weight: bold;
+}
+
+header a:hover{
+    color:#5acef1;
+    font-weight:bold;
+}
+/* showcase */
+#showcase{
+    min-height: 400px;
+    background: url('../image/payroll3.jpg') no-repeat 0px;
+	background-size:cover;	
+    position: relative;
+    text-align: center;
+    
+    color: #2a2f74;
+}
+#showcase h1{
+    margin-top: 100px;
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+#showcase p{
+    font-size: 20px
+}
+
+/* newsletter */
+#newsletter{
+    padding: 15px;
+    color: #ffffff;
+    background: #35424a;
+}
+#newsletter h1{
+    float: left;
+}
+#newsletter form{
+    float: right;
+    height: 15px;
+}
+#newsletter h1{
+    float: left;    
+}
+#newsletter input[type="email"]{
+    padding:4px;
+    height: 25px;
+    width: 250px;
+}
+
+/* boxes */
+#boxes{
+    margin-top: 20px;
+}
+#boxes .box{
+    float: left;
+    text-align: justify;
+    width:30%;
+    padding: 10px;
+}
+#boxes .box img{
+    width: 90px;
+}
+
+/* sidebar */
+aside#sidebar{
+    float: right;
+    width: 30%;
+    margin-top: 10px;
+}
+/* about main-col */
+article#main-col{
+    float: left;
+    width: 65%;
+}
+
+/* user sidebar */
+aside#user-sidebar{
+    float: left;
+    width: 30%;
+    margin-top: 5px;
+    /* border-left: #2a2f74 4px solid; */
+    padding-left: 0px ;
+}
+/* about main-col */
+article#user-main-col{
+    float: right;
+    width: 65%;
+}
+
+/* footer */
+footer{
+    padding: 10px;
+     margin-top: 10px;
+     color:#2a2f74;
+     background-color: #81d1e9;
+     text-align: center;
+}
+
+.features__title {
+    padding: 30px 0;
+    text-align: center;
+    font-weight: 300;
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+  .features__title::after {
+    content: '';
+    height: 2px;
+    width: 5%;
+    background: #2a2f74;
+    display: block;
+    margin: 10px auto 0;
+  }
+   
+/* login */
+
+.login-page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+  }
+  .form {
+    position: relative;
+    z-index: 1;
+    background: #5acef1;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
+  .form input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  .form button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #222fe0;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;     
+    cursor: pointer;
+  }
+  .form button:hover,.form button:active,.form button:focus {
+    background: #222fe0;
+  }
+  .form .message {
+    margin: 15px 0 0;
+     
+    font-size: 12px;
+  }
+  .form .message a {
+    color: #222fe0;
+    text-decoration: none;
+  }
+  .form .register-form {
+    display: block;
+  }
+  
+  .container .info {
+    margin: 50px auto;
+    text-align: center;
+  }
+  .container .info h1 {
+    margin: 0 0 15px;
+    padding: 0;
+    font-size: 36px;
+    font-weight: 300;
+    color: #1a1a1a;
+  }
+  .container .info span {
+    color: #4d4d4d;
+    font-size: 12px;
+  }
+  .container .info span a {
+    color: #000000;
+    text-decoration: none;
+  }
+  .container .info span .fa {
+    color: #5acef1;
+  }
+ 
+
+/* posts */
+.posts {
+	padding: 20px 0 100px 0;
+	float: left;
+	width: 600px;
+	margin-left: calc(100vw / 2 - 595px);
+}
+.posts .element {
+	width: 500px;
+	margin: 30px auto 0 auto;
+	background: #FFFFFF;
+	border-radius: 10px;
+	box-shadow: 0 0 20px #DADEE5;
+	padding: 20px;
+}
+.posts .photo {
+	width: 40px;
+	height:40px;
+	border-radius:10px;
+	background-size: cover;
+	background-position: center;
+	float:left;
+	margin-right: 20px;
+}
+.posts .post {
+	float: left;
+	height: 40px;
+	padding: 2px 0;
+	line-height: 38px;
+	color: #656576;
+	width: 320px;
+	margin-right: 20px;
+}
+.posts .statut_button {
+	float: left;
+	width: 60px;
+	height: 40px;
+	color: #fff;
+	background: #596AC1;
+	border-radius: 10px;
+	font-size: 14px;
+	font-weight: 500;
+}
+.posts .header {
+	line-height: 20px;
+	height: 40px;
+	font-size: 13px;
+	font-weight: 500;
+	color: #BDC0C1;
+}
+.posts .header .photo{
+	margin-right: 15px;
+}
+.posts .header h1 {
+	color: #656576;
+	display: block;
+	font-size: 15px;
+	font-weight: 500;
+}
+.posts p {
+	margin: 10px 0;
+	display :block;
+	color: #656576;
+	font-size: 16px;
+	font-weight: 400;
+}
+.posts img {
+	width: 560px;
+	margin: 5px 0 10px -50px;
+	border-radius: 10px;
+	box-shadow: 0 0 20px #DADEE5;
+}
+.posts hr {
+	background: #E8EBED;
+	height: 1px;
+	border:none;
+	margin: 0 auto;
+	width: 100%;
+}
+.posts .post_button {
+	height: 16px;
+	width: 16px;
+	float: left;
+	margin: 0 3px 10px 0;
+}
+.posts h2{
+	line-height: 26px;
+	color: #656576;
+	font-size: 16px;
+	font-weight: 500;
+	display: block;
+	margin: 15px 0
+}
+.posts h2 .post_button {
+	margin: 3px -6px 3px 0;
+	float: left;
+	border: 2px solid #fff;
+	width: 20px;
+	height:20px;
+	border-radius: 50%;
+	background-size: 16px;
+	background-position: center;
+}
+.posts h2 span {
+	font-weight: 400;
+	margin-left: 15px;
+}
+.posts .comment .photo{
+	float: left;
+	margin:0 15px 0 0;
+}
+.posts .comment{
+	line-height: 20px;
+	font-size: 13px;
+	font-weight: 500;
+	color: #BDC0C1;
+	padding: 10px 0;
+	overflow: hidden;
+}
+.posts .comment h2{
+	line-height: 20px;
+	margin:0;
+}
+.posts .comment .post_button{
+	float: right;
+}
+
+.posts .comment input {
+	width: calc(100% - 55px);
+	margin: 0;
+}
+
+    /* Media Queries */
+
+    @media(max-width: 768px){
+        header #branding,
+        header nav,
+        header nav li,
+        #newsletter h1,
+        #newsletter form,
+        #boxes .box,
+        article#main-col,
+        aside#sidebar{
+            float: none;
+            text-align: center;
+            width: 100%;
+        }
+        header{
+            padding-bottom: 20px;
+        }
+        #showcase h1{
+            margin-top: 40px;
+        }
+        #newsletter button{
+            display: block;
+            width: 100%;
+
+        }
+
+    }
