@@ -138,8 +138,16 @@ if (data < 1){
       alert('Hoops no data available')
       
     } else{
-      $('#search').append(`<button class="btn  my-2 my-sm-0 btn-success" type="submit">Pay</button>
+      
+      $('#search').append(`
+      
+      <button class="btn  my-2 my-sm-0 btn-success" type="submit">Pay</button>
     <form class="form-inline">
+    <select id="gender" >
+                        <option disabled>Please Select----</option>
+                          <option value="allusers">All Users</option>
+                                                    
+                        </select>
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>`)
