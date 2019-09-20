@@ -13,7 +13,7 @@ $(document).ready(function(){
       
       for (let object of userData) {
         
-        if (object.email === email && object.password === password && object.isAdmin ===true) {          
+        if (object.email === email && object.password === password && object.isAdmin ==="Yes" && isActive ==="Active") {          
           let id = object.id;
           id = parseInt(id);
 
@@ -22,7 +22,7 @@ $(document).ready(function(){
            window.location.replace('dashboard.html');
           $('#userID').append(`Welcome:  <span >${userID}</span>`)
           //return;
-        } if(object.email === email && object.password === password && object.isAdmin ===false && object.isActive === true){  
+        } if(object.email === email && object.password === password && object.isAdmin ==="No" && object.isActive === true){  
           // let id = object.id;
           // id = parseInt(id);
 
@@ -71,7 +71,7 @@ $(document).ready(function(){
             let level = "";
             let idCardNo = "";//surname[0] + firstname[0] + id;
             let confirmPassword= $('#confirm_password').val();
-            let isActive = true;
+            let isActive = "Active";
             let isAdmin = false;
             let regDate = Date().toString()
         
@@ -198,10 +198,12 @@ let id = parseInt(urlId[1])
 // let id = $.urlParam('id');
 const url = "http://localhost:3000/employee/";
 $.get(url + id, function(data){ 
+
+  //edit user
      $('#edit-form').append(`
      <div class="form-group">
      <label for="staff-idno">Staff ID Number</label>
-     <input type="text" class="form-control" id="staff-idno"   value="${data.idCardNo}">
+     <input type="text"  class="form-control" id="staff-idno"   value="${data.idCardNo}">
  </div>     
      <div class="form-group">
                 <label for="surname" >Surname</label>
@@ -219,36 +221,81 @@ $.get(url + id, function(data){
             </div>
 
             <div class="form-group">
-                <label for="emailAddress"> Email Address</label>
-                <input type="email" class="form-control" id="email" disabled value="${data.email}">
-            </div>
+            <label for="dob">Date of Birth</label>
+            <input type="email"  class="form-control" id="dob" disabled value="${data.dob}">
+          </div>
 
-            <div class="form-group">
-                <label for="contactAddress">Contact Address</label>
-                <input type="text" class="form-control" id="contact_address"
+          <div class="form-group">
+
+            <label for="email">Email</label>
+                <input type="email"  class="form-control" id="email" disabled value="${data.email}">
+                </div>
+
+          <div class="form-group">
+            <label for="dob">Contact Address</label>
+                <input type="text" disabled class="form-control" id="contact_address"
                     value="${data.contact_address}">
-            </div>
-
+              </div>
+             
+            <input type="password" hidden class="form-control" id="password" disabled value="${data.password}">
+           
+          <input type="gender" hidden class="form-control" id="email" disabled value="${data.gender}">
+          
             <div class="form-group">
                 <label for="level">Level</label>
-                <input type="text" class="form-control" id="level"
+                <input type="text" disabled class="form-control" id="level"
                     value="${data.level}">
             </div>
-
-            <div class="form-group">
-              <label for="salary">Salary</label>
-              <input type="text" class="form-control" id="salary"
-                  value="${Number(data.salary)}">
-            </div>
-
              
+          <div class="form-group">
+          <label for="acount status">Acount Status</label>
+          <input type="text" disabled class="form-control" id="acountactive"
+              value="${data.isActive}">
+        </div>
+         
+        <input type="text" hidden class="form-control" id="gender"
+            value="${data.gender}">
+
+            <input type="text" hidden class="form-control" id="phonenumber"
+            value="${data.phonenumber}">
+
+        <input type="text" hidden class="form-control" id="isadmin"
+            value="${data.isAdmin}">
+       
+            <input type="text" hidden class="form-control" id="regdate"
+            value="${data.reDate}">
+       
+      <input type="text" hidden class="form-control" id="regdate"
+          value="${data.regDate}">
+    
+          <div class="form-group">
+          <label for="lastAmountReceived">Last Amount Received </label>
+          <input type="text" id="lastamountreceived" disabled class="form-control" 
+              value=" ${data.lastAmountReceived}">
+        </div>
+   
+        <div class="form-group">
+            <label for="salary">Salary &#8358</label>
+            <input type="text" disabled class="form-control" id="salary"
+                value=" ${Number(data.salary)}">
+          </div>
+           
+   
+        <div class="form-group">
+        <label for="salary">Last Salary Received &#8358</label>
+        <input type="text" disabled class="form-control" id="lastsalary"
+            value=" ${Number(data.lastAmountReceived)}">
+      </div>
+   
+     
+
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
             `   
      ); 
      
    
-     
+     //display user details
      $('#view-details').append(` <tbody>
      <tr>
        <th scope="row">Staff ID No:</th>
@@ -275,6 +322,10 @@ $.get(url + id, function(data){
            <td colspan="3">${data.email}</td>
          </tr>
          <tr>
+           <th scope="row">Contact Number</th>
+           <td colspan="3">${data.phonenumber}</td>
+         </tr>
+         <tr>
            <th scope="row">Address</th>
            <td colspan="3">${data.contact_address}</td>
          </tr>
@@ -291,79 +342,116 @@ $.get(url + id, function(data){
                <td colspan="3">&#8358 ${data.salary}</td>
           </tr>
           <tr>
-               <th scope="row">Last Amoun Received</th>
-               <td colspan="3">${data.lastAmountReceived}</td>
+               <th scope="row">Last Amount Received</th>
+               <td colspan="3">&#8358 ${data.lastAmountReceived}</td>
              <tr>
-             <tr>
-               <th scope="row">Salary Status</th>
-               <td colspan="3">${data.salary_status}</td>
+             tr>
+               <th scope="row">Regisration Date </th>
+               <td colspan="3">${data.regDate}</td>
              </tr>
              <tr>
-               <th scope="row">Salary Status</th>
-               <td colspan="3">${data.salary_status}</td>
+               <th scope="row">Last Payment Date</th>
+               <td colspan="3">${data.lastPaymentDate}</td>
+             </tr>
+
+             <tr>
+               <th scope="row">Account Status</th>
+               <td colspan="3">${data.isActive}</td>
              </tr>
              
                    
    </tbody>`);
 
-   $('#pay-single').append(` <tbody>
-     <tr>
-       <th scope="row">Staff ID No:</th>
-       <td colspan="3">${data.idCardNo}</td>
-     </tr>
-     <tr>
-       <th scope="row">Suname:</th>
-       <td colspan="3">${data.surname}</td>
-     </tr>
-     <tr>
-       <th scope="row">First Name</th>
-       <td colspan="3">${data.firstname}</td>
-     </tr>
-     <tr>
-       <th scope="row">Other Name</th>
-       <td colspan="3">${data.otheranme}</td>                             
-     </tr>
-       <tr>
-           <th scope="row">Date of Birth:</th>
-           <td colspan="3">${data.dob}</td>
-       </tr>
-       <tr>
-           <th scope="row">Email</th>
-           <td colspan="3">${data.email}</td>
-         </tr>
-         <tr>
-           <th scope="row">Address</th>
-           <td colspan="3">${data.contact_address}</td>
-         </tr>
-         <tr>
-           <th scope="row">Gender</th>
-           <td colspan="3">${data.gender}</td>                             
-         </tr>
-         <tr>
-               <th scope="row">Level:</th>
-               <td colspan="3">${data.level}</td>
-          </tr>
-         <tr>
-               <th scope="row">Salary Amount:</th>
-               <td colspan="3">&#8358 ${data.salary}</td>
-          </tr>
-             <tr>
-               <th scope="row">Salary Status</th>
-               <td colspan="3">${data.salary_status}</td>
-             </tr>
-             <tr>
-               <th scope="row">Account Status</th>
-               <td colspan="3">${data.isActive}</td>
-             <tr>
-             <form>
-             <tr>
-               <th scope="row">Amount to pay</th>
-               <td colspan="3"><input type="text">&nbsp; &nbsp; &nbsp;<button class="btn btn-success">Pay</button></td>
-             <tr>          
-                   
-   </tbody>
+
+//pay single
+   $('#pay-single').append(` 
+     <div class="form-group">
+     <label for="staff-idno">Staff ID Number</label>
+     <input type="text" disabled class="form-control" id="staff-idno"   value="${data.idCardNo}">
+ </div>     
+     <div class="form-group">
+                <label for="surname" >Surname</label>
+                <input type="text" class="form-control" id="surname" disabled value="${data.surname}">
+      </div>
+
+            <div class="form-group">
+                <label for="firstname">First Name</label>
+                <input type="text" class="form-control" id="first_name" disabled value="${data.firstname}">
+            </div>
+
+            <div class="form-group">
+                <label for="othername">Other Name</label>
+                <input type="text" class="form-control" id="other_name" disabled value="${data.otheranme}">
+            </div>
+
+            <input type="email" hidden class="form-control" id="dob" disabled value="${data.dob}">
+          
+         
+                <input type="email" hidden class="form-control" id="email" disabled value="${data.email}">
+             
+                <input type="text" hidden class="form-control" id="contact_address"
+                    value="${data.contact_address}">
+             
+            <input type="password" hidden class="form-control" id="password" disabled value="${data.password}">
+           
+          <input type="gender" hidden class="form-control" id="email" disabled value="${data.gender}">
+          
+            <div class="form-group">
+                <label for="level">Level</label>
+                <input type="text" disabled class="form-control" id="level"
+                    value="${data.level}">
+            </div>
+             
+          <div class="form-group">
+          <label for="acount status">Acount Status</label>
+          <input type="text" disabled class="form-control" id="acountactive"
+              value="${data.isActive}">
+        </div>
+         
+        <input type="text" hidden class="form-control" id="gender"
+            value="${data.gender}">
+
+            <input type="text" hidden class="form-control" id="phonenumber"
+            value="${data.phonenumber}">
+
+        <input type="text" hidden class="form-control" id="isadmin"
+            value="${data.isAdmin}">
+       
+            <input type="text" hidden class="form-control" id="regdate"
+            value="${data.reDate}">
+       
+      <input type="text" hidden class="form-control" id="acountactive"
+          value="${data.regDate}">
+    
+          <div class="form-group">
+          <label for="lastpaymentdate">Last Payment Date</label>
+          <input type="text" disabled class="form-control" 
+              value=" ${data.lastPaymentDate}">
+        </div>
    
-   </form>`);
+        <div class="form-group">
+            <label for="salary">Salary &#8358</label>
+            <input type="text" disabled class="form-control" id="salary"
+                value=" ${Number(data.salary)}">
+          </div>
+   
+        <div class="form-group">
+        <label for="salary">Last Salary Received &#8358</label>
+        <input type="text" disabled class="form-control" id="lastsalary"
+            value=" ${Number(data.lastAmountReceived)}">
+      </div>
+   
+      <div class="form-group">
+          <label for="salary">Amount &#8358</label>
+          <input type="text" class="form-control" id="newsalary"
+              >
+        </div>
+
+            </div>
+            <button type="submit" class="btn btn-primary">Pay</button>
+   
+    
+  `);
 
    $('list-group').append(`
    <a class="list-group-item list-group-item-action active" id="home"  
@@ -392,31 +480,41 @@ $('#edit-form').submit(function(e) {
             let surname = $('#surname').val();            
             let firstName = $('#first_name').val();
             let otherName = $('#other_name').val();
+            let dob = $('#dob').val();
             let email = $('#email').val();    
             let contactAddress =$('#contact_address').val();
+            let phonenumber =$('#phonenumber').val();
             let password = $('#password').val();
-            let gender = $('#exampleRadios').val();
-            let salary = $('#salary').val();;
+            let gender = $('#gender').val();
+            let salary = $('#salary').val();
+            let lastPaymentDate = Date().toString(); 
+            let lastAmountReceived = $('#lastamountreceived').val();        
             let level = $('#level').val();;
-            let idCardNo =$('#staff-idno').val();;            
-            let isActive = true;
-            let isAdmin = false;      
-            
+            let idCardNo =$('#staff-idno').val();
+            let isActive = 'Yes';
+            let isAdmin = $('#isadmin').val();
+            let  regDate=  $('#regdate').val();
+
             const userData = {
               surname: surname,
               firstname: firstName,
               otheranme: otherName,
+              dob: dob,
               email: email,
               contact_address: contactAddress,
+              phonenumber: phonenumber,
               password: password,
               gender: gender,
               salary: salary,
+              lastPaymentDate:lastPaymentDate,
+              lastAmountReceived:lastAmountReceived,
               level: level,
               idCardNo:idCardNo,
               isActive:isActive,
-              isAdmin: isAdmin
-            }
-         
+              isAdmin: isAdmin,
+              regDate: regDate
+            }   
+
             $(".error").remove();
         
             if (surname.length < 1) {
@@ -431,14 +529,8 @@ $('#edit-form').submit(function(e) {
                         }
             if(contactAddress.length < 1){
                 $('#contact_address').after('<span class="error">Please input a valid email</span>');
-            }
+            }      
             
-            
-        
- 
-  $(".error").remove();
-//validate()
-//$.put(url + id, userData)
 $.ajax({
   url:url + id,
   data:userData,
@@ -450,6 +542,70 @@ $.ajax({
    
 });
 window.location.replace('view.html')
+});
+
+
+//pay single user
+$('#pay-single').submit(function(e) {
+  e.preventDefault();
+      let surname = $('#surname').val();            
+      let firstName = $('#first_name').val();
+      let otherName = $('#other_name').val();
+      let dob = $('#dob').val();
+      let email = $('#email').val();    
+      let contactAddress =$('#contact_address').val();
+      let phonenumber =$('#phonenumber').val();
+      let password = $('#password').val();
+      let gender = $('#gender').val();
+      let salary = $('#salary').val();
+      let lastPaymentDate = Date().toString(); 
+      let lastAmountReceived = $('#newsalary').val();        
+      let level = $('#level').val();;
+      let idCardNo =$('#staff-idno').val();
+      let isActive = 'Yes';
+      let isAdmin = $('#isadmin').val();
+      let  regDate=  $('#regdate').val();
+
+      const userData = {
+        surname: surname,
+        firstname: firstName,
+        otheranme: otherName,
+        dob: dob,
+        email: email,
+        contact_address: contactAddress,
+        phonenumber: phonenumber,
+        password: password,
+        gender: gender,
+        salary: salary,
+        lastPaymentDate:lastPaymentDate,
+        lastAmountReceived,
+        level: level,
+        idCardNo:idCardNo,
+        isActive:isActive,
+        isAdmin: isAdmin,
+        regDate: regDate
+      }   
+            
+      $(".error").remove();
+      if (lastAmountReceived < 50000) {
+        $('#newsalary').after('<span class="error">Please you can not pay below 50000</span>');
+      } else{
+                if (lastAmountReceived === "") {
+                  $('#newsalary').after('<span class="error">Please input payment amount</span>');
+                } else{
+                  $.ajax({
+                    url:url + id,
+                    data:userData,
+                    type:'PUT',
+                    success: function(){
+                      alert("Payment Successful"  )
+                      
+                    }
+                     
+                  });
+                }
+                  window.location.replace('view.html')
+                }
 });
 
 //Update single user
@@ -464,25 +620,32 @@ $('#edit-user').submit(function (e) {
           let surname = $('#surname').val();            
           let firstName = $('#first_name').val();
           let otherName = $('#other_name').val();
+          let dob = $('#dob').val();
           let email = $('#email').val();    
           let contactAddress =$('#contact_address').val();
           let password = $('#password').val();
           let gender = $('#exampleRadios').val();
-          let salary = $('#salary').val();;
+          let salary = $('#salary').val();
+          let lastPaymentDate = $('#lastsalary').val(); 
+          let lastAmountReceived = $('#lastamount').val();        
           let level = $('#level').val();;
           let idCardNo =$('#staff-idno').val();;            
-          let isActive = true;
-          let isAdmin = false;      
+          let isActive = 'Yes';
+          let isAdmin = 'Yes';
+          // let = regDate: regDate;
           
           const userData = {
             surname: surname,
             firstname: firstName,
             otheranme: otherName,
+            dob: dob,
             email: email,
             contact_address: contactAddress,
             password: password,
             gender: gender,
             salary: salary,
+            lastPaymentDate:lastPaymentDate,
+            lastAmountReceived,
             level: level,
             idCardNo:idCardNo,
             isActive:isActive,
