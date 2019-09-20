@@ -138,7 +138,14 @@ if (data < 1){
       alert('Hoops no data available')
       
     } else{
-      
+      for (let index = 0; index < data.length; index++) {
+$('#allusers').append(`
+
+ 
+                          <option value="${data[index].surname}">${data[index].surname}</option>
+                                                    
+                         `)
+      }
       $('#search').append(`
       
       <button class="btn  my-2 my-sm-0 btn-success" type="submit">Pay</button>
