@@ -13,7 +13,7 @@ $(document).ready(function(){
       
       for (let object of userData) {
         
-        if (object.email === email && object.password === password && object.isAdmin ==="Yes" && isActive ==="Active") {          
+        if (object.email === email && object.password === password && object.isAdmin ==="Yes" && object.isActive ==="Active") {          
           let id = object.id;
           id = parseInt(id);
 
@@ -63,67 +63,72 @@ $(document).ready(function(){
             let surname = $('#surname').val();            
             let firstName = $('#first_name').val();
             let otherName = $('#other_name').val();
+            let dob = $('#dob').val();
             let email = $('#email').val();    
             let contactAddress =$('#contact_address').val();
+            let phonenumber =$('#phonenumber').val();
             let password = $('#password').val();
-            let gender = $('#exampleRadios').val();
+            let gender = $('#gender').val();
             let salary = 0;
-            let level = "";
-            let idCardNo = "";//surname[0] + firstname[0] + id;
-            let confirmPassword= $('#confirm_password').val();
+            let lastPaymentDate =""; 
+            let lastAmountReceived = 0;      
+            let level = ""
+            let idCardNo ="";
             let isActive = "Active";
-            let isAdmin = false;
-            let regDate = Date().toString()
-        
-            
+            let isAdmin = "Yes";
+            let  regDate=  Date().toString();
+
             const userData = {
               surname: surname,
               firstname: firstName,
               otheranme: otherName,
+              dob: dob,
               email: email,
               contact_address: contactAddress,
+              phonenumber: phonenumber,
               password: password,
               gender: gender,
               salary: salary,
+              lastPaymentDate:lastPaymentDate,
+              lastAmountReceived:lastAmountReceived,
               level: level,
-              idCardNo:idCardNo ,
+              idCardNo:idCardNo,
               isActive:isActive,
               isAdmin: isAdmin,
-              regDate:regDate
-            }
+              regDate: regDate
+            } 
          
             $(".error").remove();
         
             if (surname.length < 1) {
               $('#surname').after('<span class="error">Please input a valid surname</span>');
-              return;
+            
             }
             if (firstName.length < 1) {
               $('#first_name').after('<span class="error">Please input a valid First Name</span>');
-              return;
+              
             }
              
             if (email.length < 1) {
               $('#email').after('<span class="error">Please input a valid email</span>');
-              return;
+              
               }
             if(contactAddress.length < 1){
                 $('#contact_address').after('<span class="error">Please input a valid email</span>');
-                return;
+                
             }
             if (password.length < 8) {
               $('#password').after('<span class="error">Password must be at least 8 characters long</span>');
-              return;
+              
             }
             if(confirmPassword !== password){
-                $('#confirm_password').after('<span class="error">Password Not Matched</span>');
-                return;
+                $('#confirm_password').after('<span class="error">Password Not Matched</span>');               
             } 
                   
          $.post('http://localhost:3000/employee', userData, function(){
            alert('Successfully Registered')          
           });
-          //window.location.replace('user-dashboard.html')   
+          window.location.replace('dashboard.html')   
     });
 
  //  admin  fetch all data 
@@ -169,7 +174,7 @@ deleteData();
  function deleteData(){
  $("button.delete").click( function(e) {
   e.preventDefault()
-  const id = $(this).val();
+  const id = $(this).val();  
   $.ajax({
     url: `http://localhost:3000/employee/${id}`,
     method: 'DELETE',
@@ -204,7 +209,12 @@ $.get(url + id, function(data){
      <div class="form-group">
      <label for="staff-idno">Staff ID Number</label>
      <input type="text"  class="form-control" id="staff-idno"   value="${data.idCardNo}">
- </div>     
+ </div>    
+ <div class="form-group">
+                <label for="level">Level</label>
+                <input type="text"  class="form-control" id="level"
+                    value="${data.level}">
+            </div> 
      <div class="form-group">
                 <label for="surname" >Surname</label>
                 <input type="text" class="form-control" id="surname" disabled value="${data.surname}">
@@ -241,11 +251,7 @@ $.get(url + id, function(data){
            
           <input type="gender" hidden class="form-control" id="email" disabled value="${data.gender}">
           
-            <div class="form-group">
-                <label for="level">Level</label>
-                <input type="text" disabled class="form-control" id="level"
-                    value="${data.level}">
-            </div>
+            
              
           <div class="form-group">
           <label for="acount status">Acount Status</label>
@@ -276,7 +282,7 @@ $.get(url + id, function(data){
    
         <div class="form-group">
             <label for="salary">Salary &#8358</label>
-            <input type="text" disabled class="form-control" id="salary"
+            <input type="text"  class="form-control" id="salary"
                 value=" ${Number(data.salary)}">
           </div>
            
@@ -492,7 +498,7 @@ $('#edit-form').submit(function(e) {
             let level = $('#level').val();;
             let idCardNo =$('#staff-idno').val();
             let isActive = 'Yes';
-            let isAdmin = $('#isadmin').val();
+            let isAdmin = "Yes";
             let  regDate=  $('#regdate').val();
 
             const userData = {
